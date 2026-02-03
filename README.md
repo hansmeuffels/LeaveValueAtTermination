@@ -1,30 +1,79 @@
 
-  # User Departure Date Screen
+# User Departure Date Screen
 
-  This is a code bundle for User Departure Date Screen. The original project is available at https://www.figma.com/design/TUxRtz1wA4EyoXLXrHFHk3/User-Departure-Date-Screen.
+This is a code bundle for User Departure Date Screen. The original project is available at https://www.figma.com/design/TUxRtz1wA4EyoXLXrHFHk3/User-Departure-Date-Screen.
 
-  ## Live Demo
+## Live Demo
 
-  The app is deployed at: https://hansmeuffels.github.io/LeaveValueAtTermination/
+The app is deployed at: https://hansmeuffels.github.io/LeaveValueAtTermination/
 
-  ## Running the code
+## Prerequisites
 
-  Run `npm i` to install the dependencies.
+- [Node.js](https://nodejs.org/) (version 20 or higher)
+- npm (comes with Node.js)
 
-  Run `npm run dev` to start the development server.
+## Getting Started
 
-  ## Building
+### Installation
 
-  Run `npm run build` to create a production build. The output will be in the `build/` directory.
+1. Clone the repository
+2. Install dependencies:
 
-  ## Deployment
+```bash
+npm install
+```
 
-  The app is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. The deployment is handled by GitHub Actions workflow (`.github/workflows/deploy.yml`).
+### Running the Development Server
 
-  The workflow:
-  1. Installs dependencies with `npm ci`
-  2. Builds the project with `npm run build`
-  3. Deploys the `build/` directory to GitHub Pages
+To start the development server:
 
-  The production site uses the built JavaScript bundle from the `build/` directory, not the TypeScript source files.
-  
+```bash
+npm run dev
+```
+
+The app will open in your browser at http://localhost:3000
+
+### Building for Production
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The build output will be in the `build` directory.
+
+### Preview Production Build
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Windows Setup
+
+If you're on Windows and encounter the error `'vite' is not recognized as an internal or external command`:
+
+1. Make sure you've installed dependencies first:
+   ```powershell
+   npm install
+   ```
+
+2. Then run the build:
+   ```powershell
+   npm run build
+   ```
+
+**Note**: You must run `npm install` before running any build or dev commands. This installs the required tools (including Vite) locally in the `node_modules` folder.
+
+## Deployment
+
+The app is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. The deployment is handled by GitHub Actions workflow located in `.github/workflows/deploy.yml`.
+
+The workflow:
+1. Checks out the code
+2. Sets up Node.js 20
+3. Installs dependencies with `npm ci`
+4. Builds the project with `npm run build`
+5. Deploys the `build` directory to GitHub Pages
