@@ -13,20 +13,18 @@
 
   Run `npm run dev` to start the development server.
 
+  ## Building
+
+  Run `npm run build` to create a production build. The output will be in the `build/` directory.
+
   ## Deployment
 
   The app is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. The deployment is handled by GitHub Actions workflow (`.github/workflows/deploy.yml`).
 
-  ### Deployment Process
+  The workflow:
+  1. Installs dependencies with `npm ci`
+  2. Builds the project with `npm run build`
+  3. Deploys the `build/` directory to GitHub Pages
 
-  1. On push to `main`, GitHub Actions runs `npm ci` and `npm run build`
-  2. The build output is generated in the `build/` directory (configured in `vite.config.ts`)
-  3. The workflow uploads the `build/` directory as a GitHub Pages artifact
-  4. GitHub Pages serves the built application from this artifact
-
-  ### Build Configuration
-
-  - **Base URL**: `/LeaveValueAtTermination/` (configured in `vite.config.ts`)
-  - **Output Directory**: `build/` (configured in `vite.config.ts`)
-  - **Build Command**: `npm run build`
+  The production site uses the built JavaScript bundle from the `build/` directory, not the TypeScript source files.
   
