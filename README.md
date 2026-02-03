@@ -13,7 +13,18 @@
 
   Run `npm run dev` to start the development server.
 
+  ## Building
+
+  Run `npm run build` to create a production build. The output will be in the `build/` directory.
+
   ## Deployment
 
-  The app is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. The deployment is handled by GitHub Actions workflow.
+  The app is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. The deployment is handled by GitHub Actions workflow (`.github/workflows/deploy.yml`).
+
+  The workflow:
+  1. Installs dependencies with `npm ci`
+  2. Builds the project with `npm run build`
+  3. Deploys the `build/` directory to GitHub Pages
+
+  The production site uses the built JavaScript bundle from the `build/` directory, not the TypeScript source files.
   
