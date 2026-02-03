@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { UitDienstScherm } from "./components/UitDienstScherm";
 
 export default function App() {
