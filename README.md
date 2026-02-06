@@ -43,6 +43,20 @@ npm run build
 
 The build output will be in the `build` directory.
 
+### Testing the Build
+
+To verify the build is correct (recommended before deploying):
+
+```bash
+npm test
+```
+
+This runs the build and verifies that:
+- ✅ No source file references remain (like `/src/main.tsx`)
+- ✅ Correct base path is used
+- ✅ Bundled assets are generated correctly
+- ✅ Required deployment files exist
+
 ### Preview Production Build
 
 To preview the production build locally:
@@ -76,4 +90,11 @@ The workflow:
 2. Sets up Node.js 20
 3. Installs dependencies with `npm ci`
 4. Builds the project with `npm run build`
-5. Deploys the `build` directory to GitHub Pages
+5. Verifies the build output is correct
+6. Deploys the `build` directory to GitHub Pages
+
+### Important: GitHub Pages Configuration
+
+GitHub Pages must be configured to deploy from the **`gh-pages` branch**, not the `main` branch. If you encounter 404 errors for `/src/main.tsx`, see [FIXING_404_ERROR.md](./FIXING_404_ERROR.md) for detailed troubleshooting.
+
+For more deployment details, see [DEPLOYMENT.md](./DEPLOYMENT.md).
