@@ -11,6 +11,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Note: BUILD_DIR and EXPECTED_BASE are hardcoded to match vite.config.ts
+// This keeps the script simple and dependency-free. If these values change,
+// update them here as well.
 const BUILD_DIR = path.join(__dirname, '..', 'build');
 const INDEX_HTML = path.join(BUILD_DIR, 'index.html');
 const EXPECTED_BASE = '/LeaveValueAtTermination/';
@@ -50,9 +53,10 @@ if (!indexContent.includes(EXPECTED_BASE + 'assets/')) {
 }
 
 // Check that it contains bundled JS
-if (!indexContent.includes('<script type="module"') || !indexContent.includes('.js')) {
+const scriptTagRegex = /<script[^>]+src="[^"]*\.js"/;
+if (!scriptTagRegex.test(indexContent)) {
   console.error('❌ FAIL: Built index.html does not contain bundled JavaScript');
-  console.error('   The build should create a bundled JS file.');
+  console.error('   The build should create a bundled JS file with a script tag.');
   process.exit(1);
 }
 
